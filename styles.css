@@ -1,0 +1,162 @@
+body {
+    background-color: #000000;
+    padding: 20px;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#stats{
+    color: white;
+}
+
+.paragraph{
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+* {
+    scrollbar-width: none !important;          
+    -ms-overflow-style: none !important;       
+}
+
+*::-webkit-scrollbar {
+    display: none !important;                  
+}
+
+table{
+    table-layout: fixed;
+    max-width: 560;
+    th:nth-child(1), td:nth-child(1) { width: 170px; } 
+    th:nth-child(2), td:nth-child(2) { width: 120px; } 
+    th:nth-child(3), td:nth-child(3) { width: 100px; } 
+    th:nth-child(4), td:nth-child(4) { width: 110px; }
+    th:nth-child(5), td:nth-child(5) { width: 80px; } 
+}
+
+th{
+    padding: 20px 25px; 
+    color: #a0a0a0; 
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center; 
+    border-bottom: 2px solid #444;
+}
+
+td{
+    padding-top: 10px;
+    padding-bottom: 10px;   
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.descriptionClick:hover{
+    cursor: pointer;
+    background-color: #2a2a2a;
+}
+
+.menu-bar {
+    text-align: center;
+    /*background-color: rgb(26, 52, 26);*/
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+.menu-bar button{
+    background-color: rgba(255, 255, 255, 0.825);
+    text-align: center;
+    padding: 7px;
+    min-width: 100px;
+    border-color: black;
+}
+
+.menu-bar button:hover{
+    cursor: pointer;
+}
+
+.usageInfo{
+    text-align: center;
+    color: white;
+}
+
+.searchBar{
+    color: white;
+    text-align: center;
+}
+
+#movieSearch{
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Dialogue Box */
+
+#dialogueOpen{
+    min-height: 650px;
+    min-width: 650px;
+    max-width: 650px;
+    background-color: #1F1E1F;
+    outline: none;
+    border: 6px solid #36454F;
+}
+
+#dialogueOpen:h3{
+    color: #F9FAFB;
+}
+
+#dialogueTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #E5E7EB;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+#dialogueTags {
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+#dialogueRating {
+    font-size: 1.1rem;
+    margin-top: 0;
+    color: #FBBF24; 
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.movieTag {
+    background-color: #374151;
+    color: #F9FAFB;            
+    border: 1px solid #F9FAFB; 
+    padding: 4px 6px;
+}
+
+.subtitluDialog{
+    color:#F9FAFB;
+}
+
+.synopsisCSS{
+    color: #F9FAFB;
+}
+
+#episodeContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 40px);
+    gap: 8px;
+    padding: 10px;
+}
+
+.ratingSquare{
+    width: 20px;
+    height: 20px;
+    background-color: #F9FAFB;
+}

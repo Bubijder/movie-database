@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav class="menu-bar">
+        <button onclick="showSection('ratingBase')">Movies</button>
+        <button onclick="showSection('stats')">Statistics</button>
+    </nav>
+
+    <div class = "mainSection" id = "ratingBase">
+        <p class="usageInfo">
+            <i>To view further information about a movie click on its name.</i>
+        </p>
+
+        <p class="usageInfo">Search bar:</p>
+
+        <div class="searchBar">
+            <input type="text" id="movieSearch" placeholder="Search for a movie" autocomplete="off">
+        </div>
+
+        <table>
+
+        <thead>
+            <tr>
+                <th>Movie name</th>
+                <th>Categories</th>
+                <th onclick="sortDatabase('release_date')">Release date</th>
+                <th onclick="sortDatabase('rating')">General rating</th>
+                <th onclick="sortDatabase('score')">My rating</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    </div>
+
+    <dialog id="dialogueOpen">
+        <div>
+            <h2 id="dialogueTitle"></h2>
+            <span id="dialogueTags"></span>
+            <p id="dialogueRating"></p>
+            <h3 class="subtitluDialog">Synopsis:</h3>
+            <p id="dialogueRezumat"></p>
+            <h3 class="subtitluDialog">My thoughts:</h3>
+            <div>
+                <p id="dialogueGanduri1"></p>
+                <p id="dialogueGanduri2"></p>
+            </div>
+            <div id="episodeContainer"></div>
+            <span style="font-weight: bold; color: #F9FAFB;">Personal Rating: </span>
+            <span id="finalScore" style="font-weight: bold; color: #FBBF24;"></span>
+            <p style="font-weight: bold; color: #F9FAFB;">Is the General Rating fair?  </p>
+            <span style="font-weight:bold" id="dialogueVerdict"></span>
+            <p id="dialogueClosingThoughts"></p>
+        </div>
+    </dialog>
+
+    <div class="secondarySection" id="stats" style="display: none;">
+        <p class="paragraph"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

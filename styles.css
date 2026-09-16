@@ -4,15 +4,6 @@ body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#stats{
-    color: white;
-}
-
-.paragraph{
-    margin-top: 0px;
-    margin-bottom: 4px;
-}
-
 * {
     scrollbar-width: none !important;          
     -ms-overflow-style: none !important;       
@@ -22,141 +13,129 @@ body {
     display: none !important;                  
 }
 
+/* three buttons to navigate */
+
+.sectionMenuBar{
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid gray;
+    padding-bottom: 16px;
+}
+
+.sectionMenuBar button{
+    min-width: 80px;
+    background-color: rgba(255, 255, 255, 0.825);
+    padding: 7px;
+    border-color: black;
+}
+
+.sectionMenuBar button:hover{
+    cursor: pointer;
+}
+
+.languageSection{
+    position: absolute;
+    left: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.825);
+    padding: 7px;
+    border-color: black;
+}
+
+.languageSection select{
+    background: transparent;
+    border: none;
+}
+
+.languageSection i,
+.languageSection select {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+/* movieTable section */
+
+#movieTable p{
+    color: white;
+}
+
 table{
+    padding: 15px;
     table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+
     max-width: 560;
-    th:nth-child(1), td:nth-child(1) { width: 170px; } 
-    th:nth-child(2), td:nth-child(2) { width: 120px; } 
+    th:nth-child(1), td:nth-child(1) { width: 340px; } 
+    th:nth-child(2), td:nth-child(2) { width: 180px; } 
     th:nth-child(3), td:nth-child(3) { width: 100px; } 
     th:nth-child(4), td:nth-child(4) { width: 110px; }
     th:nth-child(5), td:nth-child(5) { width: 80px; } 
 }
 
 th{
-    padding: 20px 25px; 
-    color: #a0a0a0; 
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center; 
-    border-bottom: 2px solid #444;
+    padding: 20px 25px;
+    color: white;
+    border-bottom: 2px solid gray;
 }
 
 td{
-    padding-top: 10px;
-    padding-bottom: 10px;   
-}
-
-table{
-    margin-left: auto;
-    margin-right: auto;
+    color:white;
+    padding: 3px;
     text-align: center;
 }
 
-.descriptionClick:hover{
-    cursor: pointer;
-    background-color: #2a2a2a;
-}
-
-.menu-bar {
+#searchBar{
     text-align: center;
-    /*background-color: rgb(26, 52, 26);*/
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px;
+    margin-top: 15px;
+    color: white;
 }
 
-.menu-bar button{
+#movieFind{
+    text-align: center;
+    width: 300px;
+}
+
+#movieFind, #searchTags{
+    vertical-align: middle;
+}
+
+#tagSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 15px auto 0;
+}
+
+.movieSectionTag{
+    margin-top: 10px;
+    padding: 1px;
+    min-width: 115px;
     background-color: rgba(255, 255, 255, 0.825);
     text-align: center;
-    padding: 7px;
-    min-width: 100px;
-    border-color: black;
+    color: black;
+    border: 1px solid white;
 }
 
-.menu-bar button:hover{
+.movieSectionTag:hover{
+    border: 1px solid red;
     cursor: pointer;
 }
 
-.usageInfo{
-    text-align: center;
-    color: white;
+/* review box */
+
+.disableScroll{
+    overflow: hidden;
 }
 
-.searchBar{
-    color: white;
-    text-align: center;
-}
-
-#movieSearch{
-    min-width: 250px;
-    text-align: center;
-}
-
-/* Dialogue Box */
-
-#dialogueOpen{
+#dialogOpen{
     min-height: 650px;
     min-width: 650px;
     max-width: 650px;
     background-color: #1F1E1F;
     outline: none;
     border: 6px solid #36454F;
-}
-
-#dialogueOpen:h3{
-    color: #F9FAFB;
-}
-
-#dialogueTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #E5E7EB;
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-
-#dialogueTags {
-    margin-top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-#dialogueRating {
-    font-size: 1.1rem;
-    margin-top: 0;
-    color: #FBBF24; 
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.movieTag {
-    background-color: #374151;
-    color: #F9FAFB;            
-    border: 1px solid #F9FAFB; 
-    padding: 4px 6px;
-}
-
-.subtitluDialog{
-    color:#F9FAFB;
-}
-
-.synopsisCSS{
-    color: #F9FAFB;
-}
-
-#episodeContainer{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 40px);
-    gap: 8px;
-    padding: 10px;
-}
-
-.ratingSquare{
-    width: 20px;
-    height: 20px;
-    background-color: #F9FAFB;
 }

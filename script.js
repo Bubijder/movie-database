@@ -28,16 +28,24 @@ function generateHTML(selectedMovies = database){
         `;
         tableLocation.insertAdjacentHTML("beforeend",newString);
     });
-    assignColor();
+    assignTableColor();
 }
 
-function assignColor(){
+function assignTableColor(){
     const table = document.querySelectorAll('.tableRow');
     table.forEach((row) =>{
         let personalRatingRow = row.querySelector('.personalScoreTable');
         if(personalRatingRow.textContent < 7)
             row.style.background = 'blue';
     });
+}
+
+function assignVerdictColor(verdict){
+    if (verdict === 'YES')
+        return '#006400';
+    else if (verdict === 'KINDA')
+        return '#707e07';
+    else return '#8B0000';
 }
 
 window.onload = () =>{
@@ -105,14 +113,26 @@ function openReview(index){
     const movie = database[index];
     revieWindow.showModal();
     dialogBox.innerHTML = '';
-
+    let string;
+    let tagsHTML ='';
+    let additionalTagsHTML = '';
+    movie.genre.forEach((tag) =>{
+        tagsHTML += `<span class="movieTag">${tag}</span>`;
+    })
+    if(movie.additional_tags != '')
+    {
+        movie.additional_tags.forEach((additionalTag) =>{
+            tagsHTML += `<span class="movieTag evilMovieTag">${additionalTag}</span>`;
+        });
+    }
     if(movie.type === 'Movie')
         {
-            const string = `
+            string = `
                 <h2>${movie.name}</h2>
-                <div id="tagsBox">
-
+                <div id="tagContainer">
+                    ${tagsHTML}
                 </div>
+                <span style="color: #FBBF24;" class="bolded">${movie.general_rating}</span>
                 <h3>Synopsis:</h3>
                 <p>${movie.synopsis}</p>
                 <h3>My thoughts:</h3>
@@ -120,17 +140,52 @@ function openReview(index){
                     <p>${movie.thoughts1}</p>
                     <p>${movie.thoughts2}</p>
                 </div>
-                <p><span>Personal Rating: </span><span>${movie.personal_rating}</span></p>
-                <p>Is the General Rating fair?</p>
-                <p>${movie.verdict}</p>
+                <p><span class="bolded">Personal Rating: </span><span style="color: #FBBF24;" class="bolded">${movie.personal_rating}</span></p>
+                <p class="bolded">Is the General Rating fair?</p>
+                <p class="bolded" style="color: ${assignVerdictColor(movie.verdict)}">${movie.verdict}</p>
                 <p>${movie.verdictThoughts}</p>
             `;
             dialogBox.insertAdjacentHTML("beforeend",string);
         }
     else
-    {
+        {
+            let optionsHTML = '';
+            let episodeRatingsHTML = '';
+            for(let i = 1; i <= movie.nr_seasons; i++)
+                {
+                    optionsHTML+= `<option>Season-${i}</option>`;
+                    const currentRatings = movie.ratings[i-1].split(' ');
+                    currentRatings.forEach((rating)=>{
+                        if(i == 1)
+                            episodeRatingsHTML+= `<div class="Season-${i} seasonBox"><span>${rating}</span></div>`
+                        else
+                            episodeRatingsHTML+= `<div class="Season-${i} seasonBox" style="display: none;"><span>${rating}</span></div>`
+                    });
+                }
 
-    }
-
+            string = `
+                <h2>${movie.name}</h2>  
+                ${tagsHTML}
+                <p>${movie.synopsis}</p>
+                <select id="seasonSelector">
+                    ${optionsHTML}
+                </select>
+                <div id="ratingContainer">
+                    ${episodeRatingsHTML}
+                </div>
+            `;
+            dialogBox.insertAdjacentHTML("beforeend",string);
+            const eventSeason = document.getElementById('seasonSelector');
+            eventSeason.addEventListener('change',() =>{
+                const children = document.getElementById('ratingContainer').children;
+                for(let child of children)
+                    child.style.display = 'none';
+                const visibleScore = document.querySelectorAll(`.${eventSeason.value}`);
+                visibleScore.forEach((score) =>{
+                    score.style.display = '';
+                })
+            });
+        }
+    
     document.body.classList.add('disableScroll');
 }

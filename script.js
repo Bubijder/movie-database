@@ -48,6 +48,14 @@ function assignVerdictColor(verdict){
     else return '#8B0000';
 }
 
+function assignEpisodeColor(rating){
+    if(8<= rating)
+        return '#2a9812';
+    else if(6<=rating)
+        return '#cfd22c';
+    else return '#8B0000';
+}
+
 window.onload = () =>{
     generateHTML();
 }
@@ -74,7 +82,7 @@ function searchFunction(selectedTags = []){
 }
 
 const additionalTags = ['Foreign','Japanese','Family','Quirky','Mystery','Danish','French','Vampires','Zombies',
-    'Biography','Coming-of-Age','Aliens','One Man Army','History','Police','Korean','German','Russian','Anime'];
+    'Biography','Coming-of-Age','Aliens','One Man Army','History','Police','Korean','German','Russian','Anime','Chinese'];
 additionalTags.sort();
 const selectedTag = document.getElementById('searchTags');
 additionalTags.forEach((tag) =>{
@@ -115,7 +123,6 @@ function openReview(index){
     dialogBox.innerHTML = '';
     let string;
     let tagsHTML ='';
-    let additionalTagsHTML = '';
     movie.genre.forEach((tag) =>{
         tagsHTML += `<span class="movieTag">${tag}</span>`;
     })
@@ -145,47 +152,46 @@ function openReview(index){
                 <p class="bolded" style="color: ${assignVerdictColor(movie.verdict)}">${movie.verdict}</p>
                 <p>${movie.verdictThoughts}</p>
             `;
-            dialogBox.insertAdjacentHTML("beforeend",string);
         }
     else
         {
-            let optionsHTML = '';
-            let episodeRatingsHTML = '';
-            for(let i = 1; i <= movie.nr_seasons; i++)
-                {
-                    optionsHTML+= `<option>Season-${i}</option>`;
-                    const currentRatings = movie.ratings[i-1].split(' ');
-                    currentRatings.forEach((rating)=>{
-                        if(i == 1)
-                            episodeRatingsHTML+= `<div class="Season-${i} seasonBox"><span>${rating}</span></div>`
-                        else
-                            episodeRatingsHTML+= `<div class="Season-${i} seasonBox" style="display: none;"><span>${rating}</span></div>`
-                    });
-                }
-
+            let seasonButtonsHTML = '';
+            let episoadeRatingsHTML = '';
+            for(let i=1; i<=movie.nr_seasons; i++){
+                seasonButtonsHTML += `<button class="seasonButton ${i==1 ? 'active' : ''}" onclick="showSeason('Season-${i}',this)">Season ${i}</button>`;
+                const currentRatings = movie.ratings[i-1].split(' ');
+                currentRatings.forEach((rating)=>{
+                        episoadeRatingsHTML+= `<div class="Season-${i} seasonBox" style="${i != 1 ? 'display:none;' : ''} background-color:${assignEpisodeColor(rating)};"><span>${rating}</span></div>`
+                });
+            }
             string = `
-                <h2>${movie.name}</h2>  
+                <h2>${movie.name}</h2>
                 ${tagsHTML}
+                <p style="color: #FBBF24;" class="bolded">${movie.general_rating}</p>
+                <h3>Synopsis:</h3>
                 <p>${movie.synopsis}</p>
-                <select id="seasonSelector">
-                    ${optionsHTML}
-                </select>
+                ${seasonButtonsHTML}
                 <div id="ratingContainer">
-                    ${episodeRatingsHTML}
+                    ${episoadeRatingsHTML}
                 </div>
-            `;
-            dialogBox.insertAdjacentHTML("beforeend",string);
-            const eventSeason = document.getElementById('seasonSelector');
-            eventSeason.addEventListener('change',() =>{
-                const children = document.getElementById('ratingContainer').children;
-                for(let child of children)
-                    child.style.display = 'none';
-                const visibleScore = document.querySelectorAll(`.${eventSeason.value}`);
-                visibleScore.forEach((score) =>{
-                    score.style.display = '';
-                })
-            });
+                <p><span class="bolded">Personal Rating: </span><span style="color: #FBBF24;">${movie.personal_rating}</span></p>
+                <p><span class="bolded">Calculated episode average: </span><span style="color: #FBBF24;">9.4</span></p>
+                <p class="bolded">Thoughts:</p>
+                <p>${movie.thoughts1}</p>
+                <p>${movie.thoughts2}</p>
+            `
         }
-    
+    dialogBox.insertAdjacentHTML("beforeend",string);
     document.body.classList.add('disableScroll');
+}
+
+function showSeason(id,button){
+    const allElements = document.getElementById('ratingContainer').children;
+    for(let child of allElements)
+        child.style.display = 'none';
+    document.querySelectorAll(`.${id}`).forEach((element) =>{
+        element.style.display = '';
+    });
+    document.querySelector('.active').classList.remove('active');
+    button.classList.add('active');
 }

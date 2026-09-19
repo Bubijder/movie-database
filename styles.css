@@ -27,9 +27,6 @@ body {
     background-color: rgba(255, 255, 255, 0.825);
     padding: 7px;
     border-color: black;
-}
-
-.sectionMenuBar button:hover{
     cursor: pointer;
 }
 
@@ -118,11 +115,11 @@ td{
     text-align: center;
     color: black;
     border: 1px solid white;
+    cursor: pointer;
 }
 
 .movieSectionTag:hover{
     border: 1px solid red;
-    cursor: pointer;
 }
 
 /* review box */
@@ -172,8 +169,24 @@ td{
     text-align: center;
     padding: 10px;
     background-color: white;
-    margin: 5px;
+    margin-right: 5px;
     min-width: 30px;
+    max-height: 30px;
     color: black;
     border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+.seasonButton{
+    text-align: center;
+    padding: 4px 10px;
+    cursor: pointer;
+    background: none;
+    color: white;
+    border: 1px solid #F9FAFB;
+    margin-bottom: 15px;
+}
+
+.active{
+    background: #374151;
 }

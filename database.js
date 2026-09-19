@@ -1370,7 +1370,7 @@ const database = [
     general_rating: 7.8,
     nr_ratings: 253000,
     personal_rating: 7,
-    synopsis: "Ted Kaczynski prepares mini-versions of himself in the forest, but he has to leave it when his wife dies.",
+    synopsis: "Ted Kaczynski prepares mini-versions of himself in the forest, but he has to rejoin society once his wife dies.",
     thoughts1: "The synopsis isn’t really an exaggeration, I think, given their beliefs and how the father acts. Of course, I’m exaggerating a little. The movie is still a Quirky Comedy with Teen Drama, it’s not that serious, but I found the comparison funny and eye-catching. There is that mention of Lolita, and I think it does mirror what’s happening here, given that the father instills “bad” ideas about the world in the kids, but they are educated and trained so they aren’t just groomed into thinking that way.",
     thoughts2: "Moving on from that, the movie is alright, there is character development and change in the philosophy of the father, who is a deeply flawed character, I suppose? But movies on these themes aren’t really made often (or I’m not aware of them, sorry), so this was a unique watch. Especially given that this is one of those movies where the children rebelling against their parents would not be seen as annoying, but actually really fair. I’ve particularly enjoyed this movie because it brings up problems with education, parenting, and the norms in an interesting way.",
     verdict: "YES",
@@ -1389,8 +1389,9 @@ const database = [
     personal_rating: 9,
     nr_seasons: 2,
     nr_episodes: [10,9],
-    ratings: ["10 8 9 8 10 10 10 10 10 10","0 0 0 0 0 0 0 0 0"],
-    synopsis: "",
+    ratings: ["10 7 9 8 10 10 10 10 10 10","0 0 0 0 0 0 0 0 0"],
+    synopsis: "Hello!",
+    thoughts1: "Good.",
 },
 {
     name: "The Dictator",
@@ -1425,6 +1426,24 @@ const database = [
     thoughts2: "",
     verdict: "",
     verdictThoughts: "",
+},
+{
+    name: "False Memory",
+    type: "Show",
+    creator: ["Shuyu Li","Wenyu Liu"],
+    stars: ["Youxi Deng","Ling Mo","Rantu"],
+    genre: ["Action","Animation","Sci-Fi"],
+    additional_tags: ["Anime","Foreign","Chinese"],
+    release_date: 2026,
+    general_rating: 8.7,
+    nr_ratings: 442,
+    personal_rating: 10,
+    nr_seasons: 1,
+    nr_episodes: [7],
+    ratings: ["10 9 8 10 10 10 10"],
+    synopsis: "A 24-year-old man tries to stop the end of the world, but ends up in another dimension where he needs to fight monsters to go back to reality and save the situation.",
+    thoughts1: "I know that the synopsis doesn’t actually sound that special, but this anime is definitely my nr. 1 anime, and I don’t think it will be topped by anything. At least for a very long while. Please do me a favor, because my words won’t do it justice, I believe, and watch the trailer or at least the first episode. The first episode should really get you hooked up, but I do think that the next two episodes are a weaker part of the series, but they are there to introduce some things. The second episode, at least. I’ve rated the 3rd episode as just an 8 because I think it’s rather confusing and could’ve been handled better. After that, it’s straight peak.",
+    thoughts2: "The art vision and story are just incredible, and they’re exactly what I love to see in such media. It’s a really deep story with some elements that might leave you confused, but not doing so in a way to guarantee that state, as you can easily tell what’s really going on if you pay attention to the dialogue and whatnot. I’ve watched it two times, and I’m ready for a third time.",
 },
 ];
 
@@ -1462,6 +1481,7 @@ const database = [
     nr_episodes: [],
     ratings: [""],
     synopsis: "",
+    thoughts: "",
 },
 */
 

@@ -1392,6 +1392,7 @@ const database = [
     ratings: ["10 7 9 8 10 10 10 10 10 10","0 0 0 0 0 0 0 0 0"],
     synopsis: "Hello!",
     thoughts1: "Good.",
+    thoughts2: "",
 },
 {
     name: "The Dictator",

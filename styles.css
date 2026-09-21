@@ -64,23 +64,31 @@ table{
     margin-right: auto;
 
     max-width: 560;
-    th:nth-child(1), td:nth-child(1) { width: 340px; } 
-    th:nth-child(2), td:nth-child(2) { width: 180px; } 
+    th:nth-child(1), td:nth-child(1) { width: 370px; } 
+    th:nth-child(2), td:nth-child(2) { width: 230px; } 
     th:nth-child(3), td:nth-child(3) { width: 100px; } 
     th:nth-child(4), td:nth-child(4) { width: 110px; }
     th:nth-child(5), td:nth-child(5) { width: 80px; } 
+
+    border-collapse: separate;
+    border-spacing: 1px 1px;
 }
 
 th{
-    padding: 20px 25px;
+    padding: 12px 10px;
     color: white;
     border-bottom: 2px solid gray;
 }
 
+th:nth-child(3),th:nth-child(4),th:nth-child(5){
+    cursor: pointer;
+}
+
 td{
-    color:white;
+    color:black;
     padding: 3px;
     text-align: center;
+    cursor: pointer;
 }
 
 #searchBar{
@@ -96,6 +104,8 @@ td{
 
 #movieFind, #searchTags{
     vertical-align: middle;
+    box-sizing: border-box;
+    height: 22px;
 }
 
 #tagSection{

@@ -35,8 +35,11 @@ function assignTableColor(){
     const table = document.querySelectorAll('.tableRow');
     table.forEach((row) =>{
         let personalRatingRow = row.querySelector('.personalScoreTable');
-        if(personalRatingRow.textContent < 7)
-            row.style.background = 'blue';
+        if(personalRatingRow.textContent > 8)
+            row.style.background = '#6A9955';
+        else if(personalRatingRow.textContent > 6)
+            row.style.background = '#C5A23E';
+        else row.style.background = '#C75341';
     });
 }
 
@@ -73,7 +76,7 @@ function searchFunction(selectedTags = []){
         let newDatabase = [];
         database.forEach((movie) => {
             const textMatches = movie.name.toLocaleLowerCase().includes(inputText.value.toLocaleLowerCase());
-            const tagsMatches = selectedTags.length === 0 || selectedTags.every(tag => movie.additional_tags.includes(tag));
+            const tagsMatches = selectedTags.length === 0 || selectedTags.every(tag => movie.additional_tags.includes(tag) || movie.genre.includes(tag));
             if(textMatches && tagsMatches)
                 newDatabase.push(movie);
         });
@@ -81,7 +84,7 @@ function searchFunction(selectedTags = []){
     }
 }
 
-const additionalTags = ['Foreign','Japanese','Family','Quirky','Mystery','Danish','French','Vampires','Zombies',
+let additionalTags = ['Foreign','Japanese','Family','Quirky','Mystery','Danish','French','Vampires','Zombies',
     'Biography','Coming-of-Age','Aliens','One Man Army','History','Police','Korean','German','Russian','Anime','Chinese'];
 additionalTags.sort();
 const selectedTag = document.getElementById('searchTags');
@@ -194,4 +197,31 @@ function showSeason(id,button){
     });
     document.querySelector('.active').classList.remove('active');
     button.classList.add('active');
+}
+
+let sortState = 'normal';
+let currentProperty = null;
+
+function sortProperty(property){
+    if(currentProperty !== property){
+        sortState = 'normal';
+        currentProperty = property;
+    }
+    const nextState = {
+        normal: 'asc',
+        asc: 'desc',
+        desc: 'normal'
+    };
+    sortState = nextState[sortState];
+    if(sortState == 'normal')
+        generateHTML();
+    else{
+        const array = [...database];
+        array.sort((a,b) =>{
+            if(a[property] < b[property]) return sortState === 'asc' ? 1 : -1;
+            if(a[property] > b[property]) return sortState === 'asc' ? -1 : 1;
+            return 0;
+        });
+        generateHTML(array);
+    }
 }

@@ -11,7 +11,7 @@
 <body>
 
     <nav class="sectionMenuBar">
-
+        
         <div class="languageSection">
             <i class="fa-solid fa-globe"></i>
             <select onchange="window.location.href = this.value;">
@@ -46,9 +46,9 @@
                 <tr>
                     <th>Movie name</th>
                     <th>Categories</th>
-                    <th>Release date</th>
-                    <th>General rating</th>
-                    <th>My rating</th>
+                    <th onclick="sortProperty('release_date')">Release date</th>
+                    <th onclick="sortProperty('general_rating')">General rating</th>
+                    <th onclick="sortProperty('personal_rating')">My rating</th>
                 </tr>
             </thead>
             <tbody id="movieTable">

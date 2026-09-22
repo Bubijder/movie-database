@@ -68,20 +68,22 @@ inputText.addEventListener('input',() =>{
     searchFunction()
 });
 
-function searchFunction(selectedTags = []){
-    if(inputText.value === '' && selectedTags.length === 0)
-        generateHTML();
-    else
-    {
+function searchFunction(){
         let newDatabase = [];
         database.forEach((movie) => {
             const textMatches = movie.name.toLocaleLowerCase().includes(inputText.value.toLocaleLowerCase());
-            const tagsMatches = selectedTags.length === 0 || selectedTags.every(tag => movie.additional_tags.includes(tag) || movie.genre.includes(tag));
+            const tagsMatches = currentSelectedTags.length === 0 || currentSelectedTags.every(tag => movie.additional_tags.includes(tag) || movie.genre.includes(tag));
             if(textMatches && tagsMatches)
                 newDatabase.push(movie);
         });
-        generateHTML(newDatabase)
+    if(sortState !== 'normal' && currentProperty){
+        newDatabase.sort((a, b) => {
+            if (a[currentProperty] < b[currentProperty]) return sortState === 'asc' ? 1 : -1;
+            if (a[currentProperty] > b[currentProperty]) return sortState === 'asc' ? -1 : 1;
+            return 0;
+        });
     }
+    generateHTML(newDatabase)
 }
 
 let additionalTags = ['Foreign','Japanese','Family','Quirky','Mystery','Danish','French','Vampires','Zombies',
@@ -107,9 +109,9 @@ selectedTag.addEventListener('change',() =>{
         tagEvent.addEventListener('click',()=>{
             tagEvent.remove();
             currentSelectedTags.splice(currentSelectedTags.indexOf(salutari),1);
-            searchFunction(currentSelectedTags);
+            searchFunction();
         });
-        searchFunction(currentSelectedTags);
+        searchFunction();
     }
     selectedTag.value = ''; 
 });
@@ -213,15 +215,5 @@ function sortProperty(property){
         desc: 'normal'
     };
     sortState = nextState[sortState];
-    if(sortState == 'normal')
-        generateHTML();
-    else{
-        const array = [...database];
-        array.sort((a,b) =>{
-            if(a[property] < b[property]) return sortState === 'asc' ? 1 : -1;
-            if(a[property] > b[property]) return sortState === 'asc' ? -1 : 1;
-            return 0;
-        });
-        generateHTML(array);
-    }
+    searchFunction();
 }

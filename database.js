@@ -3,7 +3,7 @@ const database = [
     name: "Perfect Days",
     type: "Movie",
     director: ["Wim Wenders"],
-    stars: [""],
+    stars: ["Kōji Yakusho","Tokio Emoto","Arisa Nakano"],
     genre: ["Drama"],
     additional_tags: ["Foreign","Japanese"],
     release_date: 2023,
@@ -377,7 +377,7 @@ const database = [
     name: "Sicario",
     type: "Movie",
     director: ["Taylor Sheridan"],
-    stars: ["Emily Blunt",""],
+    stars: ["Emily Blunt","Josh Brolin","Benicio Del Toro"],
     genre: ["Action","Drama","Thriller"],
     additional_tags: [""],
     release_date: 2015,
@@ -732,7 +732,7 @@ const database = [
 },
 {
     name: "All Quiet on the Western Front",
-    type: "Magic",
+    type: "Movie",
     director: ["Edward Berger"],
     stars: ["Felix Kammerer","Albrecht Schuch","Aaron Hilmer"],
     genre: ["Drama","War"],
@@ -1160,7 +1160,7 @@ const database = [
     type: "Movie",
     director: ["Todd Phillips"],
     stars: ["Zach Galifianakis","Bradley Cooper","Justin Bartha"],
-    genre: ["Comdedy"],
+    genre: ["Comedy"],
     additional_tags: [""],
     release_date: 2009,
     general_rating: 7.7,
@@ -1313,7 +1313,7 @@ const database = [
     type: "Movie",
     director: ["David Fincher"],
     stars: ["Brad Pitt","Edward Norton","Meat Loaf"],
-    genre: ["Drime","Thriller"],
+    genre: ["Crime","Thriller"],
     additional_tags: [""],
     release_date: 1999,
     general_rating: 8.8,
@@ -1415,7 +1415,7 @@ const database = [
     name: "The Fall",
     type: "Movie",
     director: ["Tarsem Singh"],
-    stars: ["Lee Pace","Catinca Untaru",""],
+    stars: ["Lee Pace","Catinca Untaru","Justine Waddell    "],
     genre: ["Drama","Fantasy"],
     additional_tags: [""],
     release_date: 2006,
@@ -1550,6 +1550,40 @@ const database = [
     verdict: "YES",
     verdictThoughts: "If you like religious themes and the like, I recommend it. Still a bit of a disappointing experience.",
 },
+{
+    name: "GoodFellas",
+    type: "Movie",
+    director: ["Martin Scorsese"],
+    stars: ["Robert De Niro","Ray Liotta","Joe Pesci"],
+    genre: ["Drama"],
+    additional_tags: [""],
+    release_date: 1990,
+    general_rating: 8.7,
+    nr_ratings: 1400000,
+    personal_rating: 8,
+    synopsis: "The true story of Henry Hill.",
+    thoughts1: "I really loved the first part of the movie, but honestly, after the prison part, it kinda fell off for me. Of course, that opinion is very subjective, because I really disliked Henry’s actions. It also just felt weaker overall. It shifted the tone of the movie.",
+    thoughts2: "Other than my dislike of Henry becoming a huge asshole, the movie is really good, the voiceover is such a cool addition. I loved it. The actors did an amazing job as well. Everything is just really on point, so I don’t have anything interesting to say about this movie.",
+    verdict: "YES",
+    verdictThoughts: "It’s a very popular movie, it’s good. Watch it, it’ll be worth it. I think.",
+},
+{
+    name: "Toamna bobocilor",
+    type: "Movie",
+    director: ["Mircea Moldovan","Mircea Mureșan"],
+    stars: ["Marin Moraru","Draga Olteanu Matei","Dumitru Furdui"],
+    genre: ["Comedy"],
+    additional_tags: ["Foreign","Romanian"],
+    release_date: 1975,
+    general_rating: 7.4,
+    nr_ratings: 390,
+    personal_rating: 10,
+    synopsis: "Three students, having finished their studies, end up in a little Romanian village.",
+    thoughts1: "This is one of those movies that have really subjective ratings. I honestly think barely anyone would agree with me that this is a movie worth a rating of 10, but I really liked it, and I can’t wait to watch the other two movies. It’s a nice piece of history, showcasing a comedic but mostly true view of communist village life. This could definitely happen today as well in rural Romania. I didn’t really see it as a comedy, it felt pretty real to me, but it definitely had its funny moments.",
+    thoughts2: "I really liked the music and the way it was filmed, the characters felt really good as well. Dare I say, they felt like they actually have a soul. I don’t know why I felt this way about these characters, maybe because it was in Romanian so I could more easily connect with them?",
+    verdict: "YES",
+    verdictThoughts: "I honestly can’t really recommend this movie to people, I’d say the group of people that would like this movie is too limited. I really enjoyed it, though.",
+},
 ];
 
 
@@ -1591,3 +1625,11 @@ const database = [
 },
 */
 
+const vector = database.filter(movie => movie.type === 'Movie');
+const altVector = vector.map(movie => movie.release_date)
+//const vector = database.flatMap(movies => movies.type === 'Movie' ? movies.director.join(', ') : []);
+/*const genresVector = database.flatMap(movies => movies.type === 'Movie' ? JSON.stringify(movies.stars) : []);
+const matlabRowString = `{${genresVector.join(", ")}}`;
+console.log(matlabRowString);*/
+
+console.log(altVector);
